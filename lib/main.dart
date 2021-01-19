@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:music_player/pages/SplashPage.dart';
 import 'package:scoped_model/scoped_model.dart';
 
-import 'models/SongModel.dart';
+import 'models/SongDto.dart';
 
 void main() {
   runApp(HmusicApp());

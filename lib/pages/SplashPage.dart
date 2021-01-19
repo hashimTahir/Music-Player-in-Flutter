@@ -28,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Image.asset(
-                      "images/kid.png",
+                      "images/music_skull.png",
                       height: 200,
                       width: 200,
                       fit: BoxFit.cover,
