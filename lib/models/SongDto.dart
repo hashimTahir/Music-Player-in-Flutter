@@ -3,6 +3,6 @@
  */
 import 'package:scoped_model/scoped_model.dart';
 
-class SongModel extends Model{
+class SongDto extends Model{
 
 }
