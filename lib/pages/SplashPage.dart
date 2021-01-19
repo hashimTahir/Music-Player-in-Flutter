@@ -4,6 +4,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:music_player/database/DbConstants.dart';
+import 'package:music_player/utils/Constants.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -14,8 +16,18 @@ class _SplashPageState extends State<SplashPage> {
   var isLoading = false;
 
   @override
+  void initState() {
+    Constants.hLogger.d("Fimber called");
+
+    super.initState();
+    hInitDb();
+
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+
+    return  Scaffold(
         backgroundColor: Colors.deepPurple,
         body: SafeArea(
           child: new Container(
@@ -62,4 +74,7 @@ class _SplashPageState extends State<SplashPage> {
           ),
         ));
   }
+}
+
+void hInitDb() {
 }
