@@ -17,9 +17,7 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   void initState() {
-    Constants.hLogger.d("Fimber called");
-
-    super.initState();
+   super.initState();
     hInitDb();
 
   }
