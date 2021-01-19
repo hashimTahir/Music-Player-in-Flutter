@@ -4,6 +4,7 @@
 
 import 'dart:io';
 
+import 'package:music_player/models/SongModel.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -22,26 +23,53 @@ class SongsDb {
 
   Database _hDatabase;
 
-
   Future<Database> get hDataBase async {
     if (_hDatabase != null) {
       return _hDatabase;
     }
-    _hDatabase = await _hInitDb();
-    return _hDatabase;
+    return await _hInitDb();
   }
 
-  Future _hInitDb() async {
+  Future<Database> _hInitDb() async {
     Directory hPathdirectroy = await getApplicationDocumentsDirectory();
 
     String hDbpath = join(hPathdirectroy.path, DbConstants.H_DB_NAME);
-    _hDatabase =
-        await openDatabase(hDbpath, version: 1, onCreate: _hCreateTables);
+
+
+    return await openDatabase(hDbpath, version: 1, onCreate: _hCreateTables);;
   }
 
   Future _hCreateTables(Database db, int version) async {
     await db.execute(DbConstants.H_CREATE_SONGS_TABLE_QUERY);
 
     await db.execute(DbConstants.H_CREATE_RECENTS_TABLE_QUERY);
+  }
+
+  hAddSong(SongModel songModel) async {
+    final db = await hDataBase;
+    var raw = await db.rawInsert(DbConstants.H_INSERT_QUERY, [
+      songModel.hId,
+      songModel.hTitle,
+      songModel.hDuration,
+      songModel.hAlbumArt,
+      songModel.hAlbum,
+      songModel.hUri,
+      songModel.hArtist,
+      songModel.hAlbumId,
+      songModel.hIsFav,
+      songModel.hTimeStamp,
+      songModel.hCount
+    ]);
+    return raw;
+  }
+
+  Future<List<SongModel>> hGetAllSongs() async {
+    final db = await hDataBase;
+
+    var res = await db.query(DbConstants.H_SONGS_TABLE_NAME);
+
+    List<SongModel> list =
+        res.isNotEmpty ? res.map((c) => SongModel.fromMap(c)).toList() : [];
+    return list;
   }
 }

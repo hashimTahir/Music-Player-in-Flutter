@@ -4,7 +4,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:music_player/database/DbConstants.dart';
+import 'package:music_player/database/DbTestData.dart';
+import 'package:music_player/database/SongsDb.dart';
 import 'package:music_player/utils/Constants.dart';
 
 class SplashPage extends StatefulWidget {
@@ -17,15 +18,13 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   void initState() {
-   super.initState();
+    super.initState();
     hInitDb();
-
   }
 
   @override
   Widget build(BuildContext context) {
-
-    return  Scaffold(
+    return Scaffold(
         backgroundColor: Colors.deepPurple,
         body: SafeArea(
           child: new Container(
@@ -74,5 +73,15 @@ class _SplashPageState extends State<SplashPage> {
   }
 }
 
-void hInitDb() {
+void hInitDb() async {
+  Constants.hLogger.d("hIntDb");
+  DbTestData.hGetTestData();
+
+  for (final song in DbTestData.hGetTestData()) {
+
+    await SongsDb.hSongsDb.hAddSong(song);
+    Constants.hLogger.d("Items insertion completed");
+
+  }
+  Constants.hLogger.d("Items insertion completed1");
 }

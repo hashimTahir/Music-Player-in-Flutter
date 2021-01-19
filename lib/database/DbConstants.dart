@@ -37,8 +37,7 @@ class DbConstants {
       "${DbConstants.H_ALBUM_ID_COL} NUMBER,"
       "${DbConstants.H_IS_FAV_COL} number NOT NULL default 0,"
       "${DbConstants.H_TIME_STAMP_COL} number,"
-      "${DbConstants.H_COUNT_COL} number not null default 0"
-      ")";
+      "${DbConstants.H_COUNT_COL} number not null default 0)";
 
   static const String H_CREATE_RECENTS_TABLE_QUERY =
       "CREATE TABLE ${DbConstants.H_RECENTS_TABLE_NAME} ("
@@ -49,6 +48,19 @@ class DbConstants {
       "${DbConstants.H_ALBUM_COL} TEXT,"
       "${DbConstants.H_URI_COL} TEXT, "
       "${DbConstants.H_ARTIST_COL} TEXT,"
-      "${DbConstants.H_ALBUM_ID_COL} NUMBER)"
-      ")";
+      "${DbConstants.H_ALBUM_ID_COL} NUMBER)";
+
+  static String H_INSERT_QUERY =
+      "INSERT Into ${DbConstants.H_SONGS_TABLE_NAME} ("
+      "${DbConstants.H_ID_COL},"
+      "${DbConstants.H_TITLE_COL},"
+      "${DbConstants.H_DURATION_COL},"
+      "${DbConstants.H_ALBUM_ART_COL},"
+      "${DbConstants.H_ALBUM_COL},"
+      "${DbConstants.H_URI_COL},"
+      "${DbConstants.H_ARTIST_COL},"
+      "${DbConstants.H_ALBUM_ID_COL},"
+      "${DbConstants.H_IS_FAV_COL},"
+      "${DbConstants.H_TIME_STAMP_COL},"
+      "${DbConstants.H_COUNT_COL})";
 }

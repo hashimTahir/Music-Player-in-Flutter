@@ -24,10 +24,6 @@ class HmusicApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var hquery = DbConstants.H_CREATE_SONGS_TABLE_QUERY;
-    var hquery1 = DbConstants.H_CREATE_RECENTS_TABLE_QUERY;
-    Constants.hLogger.d("Create $hquery");
-    Constants.hLogger.d("Recent $hquery1");
 
     return DynamicTheme(
         defaultBrightness: Brightness.dark,
