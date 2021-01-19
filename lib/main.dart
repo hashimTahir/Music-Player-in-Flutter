@@ -3,6 +3,7 @@
  */
 
 import 'package:dynamic_theme/dynamic_theme.dart';
+import 'package:fimber/fimber_base.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player/pages/SplashPage.dart';
 import 'package:music_player/utils/Constants.dart';
@@ -12,6 +13,7 @@ import 'database/DbConstants.dart';
 import 'models/SongDto.dart';
 
 void main() {
+  Fimber.plantTree(DebugTree());
   runApp(HmusicApp());
 }
 
