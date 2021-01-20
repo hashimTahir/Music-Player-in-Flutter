@@ -2,8 +2,11 @@
  * Copyright (c) 2021/  1/ 20.  Created by Hashim Tahir
  */
 
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:music_player/Navigation/Routes.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -14,6 +17,9 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+
+    Timer(Duration(seconds: 3),
+        () => {Navigator.pushReplacementNamed(context, Routes.hHomeRoute)});
   }
 
   @override

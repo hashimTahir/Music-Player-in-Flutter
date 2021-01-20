@@ -5,9 +5,14 @@
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:fimber/fimber_base.dart';
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/HP/Desktop/Hashim/music_player/lib/ui/splash/SplashPage.dart';
+import 'package:music_player/ui/home/HomePage.dart';
+import 'package:music_player/ui/playlist/PlaylistPage.dart';
+import 'package:music_player/ui/songdetail/SongDetailPage.dart';
 import 'package:scoped_model/scoped_model.dart';
 
+import 'file:///C:/Users/HP/Desktop/Hashim/music_player/lib/ui/splash/SplashPage.dart';
+
+import 'Navigation/Routes.dart';
 import 'models/SongDto.dart';
 
 void main() {
@@ -30,8 +35,17 @@ class HmusicApp extends StatelessWidget {
               theme: theme,
               debugShowCheckedModeBanner: false,
               home: SplashPage(),
+              routes: hSetRoutes(),
             ),
           );
         });
+  }
+
+  Map<String, WidgetBuilder> hSetRoutes() {
+    return {
+      Routes.hPlaylistRoute: (context) => PlaylistPage(),
+      Routes.hHomeRoute: (context) => HomePage(),
+      Routes.hSongDetailRoute: (context) => SongDetailPage(),
+    };
   }
 }
