@@ -4,7 +4,8 @@
 
 import 'dart:convert';
 
-import 'package:music_player/database/DbConstants.dart';
+import 'package:music_player/repository/database/DbConstants.dart';
+
 
 class   SongModel {
   int hId;
