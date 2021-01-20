@@ -54,4 +54,9 @@ class DbConstants {
       '${H_TITLE_COL}, ${H_ALBUM_ART_COL}, ${H_ALBUM_COL}, ${H_URI_COL}, '
       '${H_ALBUM_ID_COL}, ${H_ARTIST_COL}, ${H_TIME_STAMP_COL}, '
       '${H_COUNT_COL}, ${H_IS_FAV_COL}) VALUES(?,?,?,?,?,?,?,?,?,?,?);';
+
+  static String H_INSERT_RECENT_Q =
+      'INSERT INTO ${H_RECENTS_TABLE}(${H_ID_COL}, ${H_DURATION_COL}, '
+      '${H_TITLE_COL}, ${H_ALBUM_ART_COL}, ${H_ALBUM_COL}, ${H_URI_COL}, '
+      '${H_ALBUM_ID_COL}, ${H_ARTIST_COL}) VALUES(?,?,?,?,?,?,?,?);';
 }

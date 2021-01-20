@@ -107,7 +107,6 @@ class SongsDb {
       int h = await db.delete(DbConstants.H_CREATE_SONGS_TABLE_Q,
           where: '${DbConstants.H_ID_COL}=?', whereArgs: [model.hId]);
       return h;
-
     } catch (e) {
       Constants.hLogger.d("Exception ${e}");
     }

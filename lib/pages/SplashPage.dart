@@ -4,9 +4,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:music_player/database/SongsDb.dart';
-import 'package:music_player/models/SongModel.dart';
-import 'package:music_player/utils/Constants.dart';
+import 'package:music_player/utils/SongFinder.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -19,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    hInitDb();
+    SongFinder.hFindSongs();
   }
 
   @override
@@ -71,17 +69,4 @@ class _SplashPageState extends State<SplashPage> {
           ),
         ));
   }
-}
-
-void hInitDb() async {
-  // for (final song in DbTestData.hGetTestData()) {
-
-  List<SongModel> test = await SongsDb.hSongsDb.hGetAllSongs();
-  for (final song in test) {
-    Constants.hLogger.d(song.hTitle);
-  }
-  // Constants.hLogger.d("Items insertion completed");
-
-  // }
-  Constants.hLogger.d("Items insertion completed1");
 }

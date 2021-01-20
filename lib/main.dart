@@ -16,12 +16,8 @@ void main() {
 }
 
 class HmusicApp extends StatelessWidget {
-
-
-
   @override
   Widget build(BuildContext context) {
-
     return DynamicTheme(
         defaultBrightness: Brightness.dark,
         data: (bri) => new ThemeData(
