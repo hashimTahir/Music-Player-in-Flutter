@@ -1,10 +1,9 @@
 /*
- * Copyright (c) 2021/  1/ 18.  Created by Hashim Tahir
+ * Copyright (c) 2021/  1/ 20.  Created by Hashim Tahir
  */
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:music_player/utils/SongFinder.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -12,12 +11,9 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  var isLoading = false;
-
   @override
   void initState() {
     super.initState();
-    SongFinder.hFindSongs();
   }
 
   @override
@@ -55,11 +51,11 @@ class _SplashPageState extends State<SplashPage> {
                 ),
                 Expanded(
                   child: Center(
-                    child: isLoading
-                        ? CircularProgressIndicator(
-                            backgroundColor: Colors.white,
-                          )
-                        : Container(),
+                    child:
+                        // ? CircularProgressIndicator(
+                        //     backgroundColor: Colors.white,
+                        //   )
+                        Container(),
                   ),
                 ),
                 Text("Setting up...",

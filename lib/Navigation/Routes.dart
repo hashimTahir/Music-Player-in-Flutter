@@ -3,8 +3,8 @@
  */
 
 class Routes {
-  static var hPlaylistRoute = '/hPlaylist';
-  static var hHomeRoute = '/hHome';
-  static var hSplashRoute = '/hSplash';
-  static var hSongDetailRoute = '/hSplash';
+  static var hPlaylistRoute = '/hPlaylistRoute';
+  static var hHomeRoute = '/hHomeRoute';
+  static var hSplashRoute = '/hSplashRoute';
+  static var hSongDetailRoute = '/hSongDetailRoute';
 }
