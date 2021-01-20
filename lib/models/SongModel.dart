@@ -6,9 +6,8 @@ import 'dart:convert';
 
 import 'package:music_player/database/DbConstants.dart';
 
-class SongModel {
+class   SongModel {
   int hId;
-  int hNumber;
   String hTitle;
   int hDuration;
   String hAlbumArt;
@@ -16,13 +15,12 @@ class SongModel {
   String hUri;
   String hArtist;
   int hAlbumId;
-  bool hIsFav;
+  int hIsFav;
   String hTimeStamp;
   int hCount;
 
   SongModel({
     this.hId,
-    this.hNumber,
     this.hTitle,
     this.hDuration,
     this.hAlbumArt,
@@ -45,19 +43,19 @@ class SongModel {
     return json.encode(dyn);
   }
 
-  factory SongModel.fromMap(Map<String, dynamic> json) => new SongModel(
-        hId: json[DbConstants.H_ID_COL],
-        hDuration: json[DbConstants.H_DURATION_COL],
-        hTitle: json[DbConstants.H_TITLE_COL],
-        hAlbumArt: json[DbConstants.H_ALBUM_ART_COL],
-        hAlbum: json[DbConstants.H_ALBUM_COL],
-        hAlbumId: json[DbConstants.H_ALBUM_ID_COL],
-        hUri: json[DbConstants.H_URI_COL],
-        hTimeStamp: json[DbConstants.H_TIME_STAMP_COL],
-        hArtist: json[DbConstants.H_ARTIST_COL],
-        hIsFav: json[DbConstants.H_IS_FAV_COL],
-        hCount: json[DbConstants.H_COUNT_COL],
-      );
+  SongModel.fromMap(Map<String, dynamic> json) {
+    hId = json[DbConstants.H_ID_COL];
+    hDuration = json[DbConstants.H_DURATION_COL];
+    hTitle = json[DbConstants.H_TITLE_COL];
+    hAlbumArt = json[DbConstants.H_ALBUM_ART_COL];
+    hAlbum = json[DbConstants.H_ALBUM_COL];
+    hAlbumId = json[DbConstants.H_ALBUM_ID_COL];
+    hUri = json[DbConstants.H_URI_COL];
+    hTimeStamp = json[DbConstants.H_TIME_STAMP_COL].toString();
+    hArtist = json[DbConstants.H_ARTIST_COL];
+    hIsFav = json[DbConstants.H_IS_FAV_COL];
+    hCount = json[DbConstants.H_COUNT_COL];
+  }
 
   Map<String, dynamic> toMap() => {
         DbConstants.H_ID_COL: hId,

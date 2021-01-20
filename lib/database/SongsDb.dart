@@ -5,6 +5,7 @@
 import 'dart:io';
 
 import 'package:music_player/models/SongModel.dart';
+import 'package:music_player/utils/Constants.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -35,41 +36,80 @@ class SongsDb {
 
     String hDbpath = join(hPathdirectroy.path, DbConstants.H_DB_NAME);
 
-
-    return await openDatabase(hDbpath, version: 1, onCreate: _hCreateTables);;
+    return await openDatabase(hDbpath, version: 1, onCreate: _hCreateTables);
   }
 
   Future _hCreateTables(Database db, int version) async {
-    await db.execute(DbConstants.H_CREATE_SONGS_TABLE_QUERY);
+    try {
+      await db.execute(DbConstants.H_CREATE_SONGS_TABLE_Q);
 
-    await db.execute(DbConstants.H_CREATE_RECENTS_TABLE_QUERY);
+      await db.execute(DbConstants.H_CREATE_RECENTS_TABLE_Q);
+    } catch (e) {
+      Constants.hLogger.d("Exception ${e}");
+    }
   }
 
   hAddSong(SongModel songModel) async {
-    final db = await hDataBase;
-    var raw = await db.rawInsert(DbConstants.H_INSERT_QUERY, [
-      songModel.hId,
-      songModel.hTitle,
-      songModel.hDuration,
-      songModel.hAlbumArt,
-      songModel.hAlbum,
-      songModel.hUri,
-      songModel.hArtist,
-      songModel.hAlbumId,
-      songModel.hIsFav,
-      songModel.hTimeStamp,
-      songModel.hCount
-    ]);
-    return raw;
+    try {
+      final db = await hDataBase;
+      var raw = db.rawInsert(DbConstants.H_INSERT_SONG_Q, [
+        songModel.hId,
+        songModel.hDuration,
+        songModel.hTitle,
+        songModel.hAlbumArt,
+        songModel.hAlbum,
+        songModel.hUri,
+        songModel.hAlbumId,
+        songModel.hArtist,
+        songModel.hTimeStamp,
+        songModel.hCount,
+        songModel.hIsFav
+      ]);
+      return raw;
+    } catch (e) {
+      Constants.hLogger.d("Exception ${e}");
+    }
   }
 
   Future<List<SongModel>> hGetAllSongs() async {
-    final db = await hDataBase;
+    try {
+      final db = await hDataBase;
 
-    var res = await db.query(DbConstants.H_SONGS_TABLE_NAME);
+      List<Map<String, dynamic>> hList =
+          await db.query(DbConstants.H_SONGS_TABLE);
+      List<SongModel> hSongModelList = List.empty(growable: true);
+      hList.forEach((element) {
+        hSongModelList.add(SongModel.fromMap(element));
+      });
+      return hSongModelList;
+    } catch (e) {
+      Constants.hLogger.d("Exception ${e}");
+    }
+  }
 
-    List<SongModel> list =
-        res.isNotEmpty ? res.map((c) => SongModel.fromMap(c)).toList() : [];
-    return list;
+  Future<int> hUpdateSong(SongModel model) async {
+    try {
+      final db = await hDataBase;
+
+      int h = await db.update(DbConstants.H_SONGS_TABLE, model.toMap(),
+          where: '${DbConstants.H_ID_COL}=?', whereArgs: [model.hId]);
+
+      return h;
+    } catch (e) {
+      Constants.hLogger.d("Exception ${e}");
+    }
+  }
+
+  Future<int> hDeleteSong(SongModel model) async {
+    try {
+      final db = await hDataBase;
+
+      int h = await db.delete(DbConstants.H_CREATE_SONGS_TABLE_Q,
+          where: '${DbConstants.H_ID_COL}=?', whereArgs: [model.hId]);
+      return h;
+
+    } catch (e) {
+      Constants.hLogger.d("Exception ${e}");
+    }
   }
 }

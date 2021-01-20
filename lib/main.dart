@@ -5,10 +5,7 @@
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:fimber/fimber_base.dart';
 import 'package:flutter/material.dart';
-import 'package:music_player/database/DbConstants.dart';
-import 'package:music_player/database/SongsDb.dart';
 import 'package:music_player/pages/SplashPage.dart';
-import 'package:music_player/utils/Constants.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import 'models/SongDto.dart';
