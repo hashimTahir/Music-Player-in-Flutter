@@ -9,6 +9,7 @@ import 'package:music_player/models/SongDto.dart';
 import 'package:music_player/ui/widgets/ListSongsWidget.dart';
 import 'package:music_player/ui/widgets/RecentWidget.dart';
 import 'package:music_player/ui/widgets/SearchSongWidget.dart';
+import 'package:music_player/utils/TestData.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 /*Todo: Add Tempraray assets*/
@@ -46,11 +47,12 @@ class _HomePageState extends State<HomePage> {
                 ScopedModelDescendant<SongDto>(
                   builder: (context, child, model) {
                     return new Hero(
+                        tag: "some tag 1",
                         /*Todo Add Image here*/
                         child: new Image.asset(
-                      "images/default_image.jpg",
-                      fit: BoxFit.cover,
-                    ));
+                          "images/default_image.webp",
+                          fit: BoxFit.cover,
+                        ));
                   },
                 ),
               ],
@@ -81,9 +83,7 @@ class _HomePageState extends State<HomePage> {
                             builder: (context, child, model) {
                           return Flexible(
                             child: RotateAnimatedTextKit(
-                                text: [
-                                  "Add Some Text here"
-                                ],
+                                text: ["Add Some Text here"],
                                 textStyle: TextStyle(
                                   fontSize: 17.0,
                                 ),
@@ -112,54 +112,74 @@ class _HomePageState extends State<HomePage> {
             new Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                new Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    new FloatingActionButton(
-                      heroTag: "favourites",
-                      onPressed: () {
-                        Navigator.of(context)
-                            .push(new MaterialPageRoute(builder: (context) {
-                          return new ListSongsWidget();
-                        }));
-                      },
-                      child: new Icon(Icons.favorite_border),
-                    ),
-                    new Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4.0)),
-                    new Text("Favourites"),
-                  ],
+                Expanded(
+                  child: new Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      new FloatingActionButton(
+                        heroTag: "favourites",
+                        onPressed: () {
+                          Navigator.of(context)
+                              .push(new MaterialPageRoute(builder: (context) {
+                            return new ListSongsWidget(
+                                TestData.hGetTestData1());
+                          }));
+                        },
+                        child: new Icon(Icons.favorite_border),
+                      ),
+                      new Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0)),
+                      new Text(
+                        "Favourites",
+                        style: TextStyle(color: Colors.red, fontSize: 12.0),
+                        maxLines: 1,
+                      ),
+                    ],
+                  ),
                 ),
-                new Column(
-                  children: <Widget>[
-                    new FloatingActionButton(
-                      heroTag: "Top",
-                      onPressed: () {
-                        Navigator.of(context)
-                            .push(new MaterialPageRoute(builder: (context) {
-                          return new ListSongsWidget();
-                        }));
-                      },
-                      child: new Icon(Icons.show_chart),
-                    ),
-                    new Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4.0)),
-                    new Text("Top songs"),
-                  ],
+                Expanded(
+                  child: new Column(
+                    children: <Widget>[
+                      new FloatingActionButton(
+                        heroTag: "Top",
+                        onPressed: () {
+                          Navigator.of(context)
+                              .push(new MaterialPageRoute(builder: (context) {
+                            return new ListSongsWidget(
+                                TestData.hGetTestData2());
+                          }));
+                        },
+                        child: new Icon(Icons.show_chart),
+                      ),
+                      new Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0)),
+                      new Text(
+                        "Top songs",
+                        style: TextStyle(color: Colors.red, fontSize: 12.0),
+                        maxLines: 1,
+                      ),
+                    ],
+                  ),
                 ),
-                new Column(
-                  children: <Widget>[
-                    new FloatingActionButton(
-                      heroTag: "shuffle",
-                      onPressed: () {
-                        /*ToDo Add Button Press*/
-                      },
-                      child: new Icon(Icons.shuffle),
-                    ),
-                    new Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4.0)),
-                    new Text("Random"),
-                  ],
+                Expanded(
+                  child: new Column(
+                    children: <Widget>[
+                      new FloatingActionButton(
+                        heroTag: "shuffle",
+                        onPressed: () {
+                          /*ToDo Add Button Press*/
+                        },
+                        child: new Icon(Icons.shuffle),
+                      ),
+                      new Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0)),
+                      new Text(
+                        "Random",
+                        style: TextStyle(color: Colors.red, fontSize: 12.0),
+                        maxLines: 1,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -174,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            RecentWidget(),
+            RecentWidget(TestData.hGetTestData3()),
             new Divider(),
             new Padding(
               padding: const EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0),
@@ -186,7 +206,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            RecentWidget(),
+            RecentWidget(TestData.hGetTestData4()),
             new Divider(),
             new Padding(
               padding: const EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0),
@@ -207,11 +227,12 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(
                           child: new Hero(
                         child: new Image.asset(
-                          "images/default_image.jpg",
+                          "images/default_image.webp",
                           height: 180.0,
                           width: MediaQuery.of(context).size.width,
                           fit: BoxFit.cover,
                         ),
+                        tag: "Some tag 2",
                       )),
                       SizedBox(
                         width: MediaQuery.of(context).size.width,

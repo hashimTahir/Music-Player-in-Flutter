@@ -5,11 +5,13 @@
 import 'package:flutter/material.dart';
 import 'package:music_player/models/SongDto.dart';
 import 'package:music_player/models/SongModel.dart';
+import 'package:music_player/utils/TestData.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class RecentWidget extends StatelessWidget {
   List<SongModel> hSongList;
 
+  RecentWidget(this.hSongList);
   @override
   Widget build(BuildContext context) {
     return new Container(
@@ -27,11 +29,12 @@ class RecentWidget extends StatelessWidget {
                         SizedBox(
                           child: new Hero(
                             child: new Image.asset(
-                              "images/default_image.jpg",
+                              "images/default_image.webp",
                               height: 120.0,
                               width: 200.0,
                               fit: BoxFit.cover,
                             ),
+                            tag: hSongList[i].hTitle,
                           ),
                         ),
                         SizedBox(
