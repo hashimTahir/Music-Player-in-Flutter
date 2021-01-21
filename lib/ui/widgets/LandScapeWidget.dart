@@ -12,11 +12,7 @@ class LandScapeWidget extends StatefulWidget {
   _LandScapeWidgetState createState() => _LandScapeWidgetState();
 }
 
-class _LandScapeWidgetState extends State<LandScapeWidget>
-    with TickerProviderStateMixin {
-  Animation<double> hAnimationDuration;
-  AnimationController hAnimationController;
-
+class _LandScapeWidgetState extends State<LandScapeWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +21,7 @@ class _LandScapeWidgetState extends State<LandScapeWidget>
         new Container(
           width: MediaQuery.of(context).size.width / 1.9,
           height: MediaQuery.of(context).size.height,
-          child: Hero(
+          child:  Hero(
             tag: 'this is tag',
             child: Image.asset(
               "images/defatul_image.webp",
@@ -59,9 +55,7 @@ class _LandScapeWidgetState extends State<LandScapeWidget>
                 ),
               ),
               new Slider(
-                value: 0.3,
                 min: 0.0,
-                max: 5.0,
                 onChanged: (double value) => {
                   /*onChanged Listerner*/
                 },
@@ -100,7 +94,6 @@ class _LandScapeWidgetState extends State<LandScapeWidget>
                         backgroundColor: Colors.blue,
                         child: new AnimatedIcon(
                           icon: AnimatedIcons.pause_play,
-                          progress: hAnimationDuration,
                         ),
                       ),
                       ScopedModelDescendant<SongDto>(
@@ -136,16 +129,5 @@ class _LandScapeWidgetState extends State<LandScapeWidget>
         )
       ],
     ));
-  }
-
-  @override
-  void initState() {
-    hAnimationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 500))
-          ..addListener(() {
-            setState(() {});
-          });
-    hAnimationDuration =
-        Tween<double>(begin: 0.0, end: 1.0).animate(hAnimationController);
   }
 }
