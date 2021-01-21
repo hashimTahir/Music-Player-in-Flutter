@@ -31,6 +31,7 @@ class _PortraitWidgetState extends State<PortraitWidget> {
             ),
           ),
           new Slider(
+            value: 0.6,
             min: 0.0,
           ),
           new Row(

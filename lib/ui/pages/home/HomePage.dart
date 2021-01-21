@@ -5,6 +5,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:music_player/Navigation/Routes.dart';
 import 'package:music_player/models/SongDto.dart';
 import 'package:music_player/ui/widgets/ListSongsWidget.dart';
 import 'package:music_player/ui/widgets/RecentWidget.dart';
@@ -21,11 +22,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final Orientation orientation = MediaQuery.of(context).orientation;
+    final Orientation orientation = MediaQuery
+        .of(context)
+        .orientation;
     return new CustomScrollView(
       slivers: <Widget>[
         new SliverAppBar(
-          expandedHeight: MediaQuery.of(context).size.height / 2.4,
+          expandedHeight: MediaQuery
+              .of(context)
+              .size
+              .height / 2.4,
           floating: false,
           pinned: true,
           title: new Text("Music Player"),
@@ -77,22 +83,24 @@ class _HomePageState extends State<HomePage> {
                         Icon(
                           Icons.play_circle_outline,
                           size: 50.0,
-                          color: Theme.of(context).accentColor,
+                          color: Theme
+                              .of(context)
+                              .accentColor,
                         ),
                         ScopedModelDescendant<SongDto>(
                             builder: (context, child, model) {
-                          return Flexible(
-                            child: RotateAnimatedTextKit(
-                                text: ["Add Some Text here"],
-                                textStyle: TextStyle(
-                                  fontSize: 17.0,
+                              return Flexible(
+                                child: RotateAnimatedTextKit(
+                                    text: ["Add Some Text here"],
+                                    textStyle: TextStyle(
+                                      fontSize: 17.0,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                    alignment: AlignmentDirectional
+                                        .topStart // or Alignment.topLeft
                                 ),
-                                textAlign: TextAlign.left,
-                                alignment: AlignmentDirectional
-                                    .topStart // or Alignment.topLeft
-                                ),
-                          );
-                        }),
+                              );
+                            }),
                       ],
                     ),
                   ],
@@ -167,6 +175,9 @@ class _HomePageState extends State<HomePage> {
                       new FloatingActionButton(
                         heroTag: "shuffle",
                         onPressed: () {
+                          Navigator.pushReplacementNamed(
+                              context, Routes.hPlaylistRoute);
+
                           /*ToDo Add Button Press*/
                         },
                         child: new Icon(Icons.shuffle),
@@ -226,16 +237,22 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       SizedBox(
                           child: new Hero(
-                        child: new Image.asset(
-                          "images/default_image.webp",
-                          height: 180.0,
-                          width: MediaQuery.of(context).size.width,
-                          fit: BoxFit.cover,
-                        ),
-                        tag: "Some tag 2",
-                      )),
+                            child: new Image.asset(
+                              "images/default_image.webp",
+                              height: 180.0,
+                              width: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width,
+                              fit: BoxFit.cover,
+                            ),
+                            tag: "Some tag 2",
+                          )),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width,
                         child: Padding(
                           // padding: EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
                           padding: EdgeInsets.fromLTRB(4.0, 8.0, 0.0, 0.0),
