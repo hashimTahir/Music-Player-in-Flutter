@@ -3,7 +3,7 @@
  */
 import 'package:auto_route/auto_route_annotations.dart';
 import 'package:music_player/ui/pages/test/TestPage.dart';
-import 'package:music_player/ui/pages/test2/TestPage1.dart';
+import 'package:music_player/ui/pages/test2/StartupTestPage.dart';
 
 /*The $ sign in the class name is very important because the router
 * which is generated is without the $ sign, and that is the one, which will
@@ -14,8 +14,10 @@ import 'package:music_player/ui/pages/test2/TestPage1.dart';
 @MaterialAutoRouter(
   routes: <AutoRoute>[
     // initial route is named "/"
-    MaterialRoute(page: TestPage, initial: true),
-    MaterialRoute(page: TestPage1,),
+    MaterialRoute(page: StartupTestPage, initial: true),
+    MaterialRoute(
+      page: TestPage,
+    ),
   ],
 )
 class $Router {}

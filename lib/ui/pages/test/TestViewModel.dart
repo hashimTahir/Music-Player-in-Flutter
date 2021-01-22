@@ -3,9 +3,9 @@
  */
 
 /*Stacked */
-/*StateManagement
-* Navigation
-* Inversion of Control i.e. Di
+/*StateManagement (ViewModel)
+* Navigation (Router)
+* Inversion of Control i.e. Di ( Location Service )
 * Data Models*/
 
 import 'package:stacked/stacked.dart';

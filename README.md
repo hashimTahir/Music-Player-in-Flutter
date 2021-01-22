@@ -28,3 +28,23 @@ available for Flutter.
 Dart is an ugly language. From access modifiers to interfaces to even
 naming conventions, its all ugly.
 
+
+
+## Architecture - Independent of Flutter framework.
+
+  Thoe Core pillars of stack architecture.
+
+###    State Management:
+ This is how the state of the application is kept in sync
+ with what's being shown on the UI.
+###    Navigation:
+Flutters built in named routing functionality is used along with
+Get and auto_route to remove all the boilerplate code.
+
+ ###   Inversion of Control:
+  In layman's terms called Dependency Injection or Service Location.
+   For this  use get_it and injectable to generate all the service code.
+
+
+ ###   Data Models: Freezed and Json_serializable is used to
+  generate all of our models required in the app.

@@ -4,10 +4,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'StartupTestViewModel.dart';
 
-import 'TestViewModel.dart';
-
-class TestPage1 extends StatelessWidget {
+class StartupTestPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<TestViewModel1>.reactive(
@@ -17,7 +16,7 @@ class TestPage1 extends StatelessWidget {
                 child: Text(model.title),
               ),
               floatingActionButton:
-                  FloatingActionButton(onPressed: model.hUpdateCounter),
+                  FloatingActionButton(onPressed: model.hNavigateToTestPage),
             ),
         viewModelBuilder: () => TestViewModel1());
   }
