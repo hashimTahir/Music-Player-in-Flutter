@@ -5,7 +5,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player/models/SongModel.dart';
-import 'package:music_player/utils/TestData.dart';
 
 import 'AvatarWidget.dart';
 

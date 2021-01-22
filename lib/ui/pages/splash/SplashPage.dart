@@ -6,7 +6,6 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:music_player/Navigation/Routes.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -18,8 +17,9 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
 
+    /*Todo user router*/
     Timer(Duration(seconds: 3),
-        () => {Navigator.pushReplacementNamed(context, Routes.hHomeRoute)});
+        () => {Navigator.pushReplacementNamed(context,'')});
   }
 
   @override

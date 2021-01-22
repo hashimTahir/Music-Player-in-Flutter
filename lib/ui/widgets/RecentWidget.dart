@@ -5,13 +5,13 @@
 import 'package:flutter/material.dart';
 import 'package:music_player/models/SongDto.dart';
 import 'package:music_player/models/SongModel.dart';
-import 'package:music_player/utils/TestData.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class RecentWidget extends StatelessWidget {
   List<SongModel> hSongList;
 
   RecentWidget(this.hSongList);
+
   @override
   Widget build(BuildContext context) {
     return new Container(

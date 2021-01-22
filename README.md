@@ -7,21 +7,20 @@
 
 Flutter is great for fast paced ui building. It just works and works
 great. The trouble one has to go through for animations and building
-ui's in Xml in native, comes pre-built in flutter. Also it is cross
-platform and works across both android and ios.
+ui's in Xml in native,is not a major issue in Flutter as animations and
+easily customizeable widgets comes pre-built in Flutter. P.s. It is cross
+platform and works across both Android and Ios.
 
 
 ## The Bad
 
 
-Everything in flutter is a plug-in. Plug-ins are pre build libries
+Everything in flutter is a Plug-in. Plug-ins are pre build libraries
 written by other developers, which actually convert the written code
-in native for both ios and android. One does not have the freedom to
-access the underlying native platforms. It has to be done by a plug-in.
-But the good news is there are already thousands and thousands of plug-in
-available for flutter.The configuration file 'pubspec.yml' is awful to edit.
-any wrong intent or spaces cause the whole thing to break.
-
+in native for both Ios and Android. One does not have the freedom to
+access the underlying native platforms. It has to be done by a Plug-in.
+But the good news is there are already thousands and thousands of Plug-ins
+available for Flutter.
 
 ## The Ugly
 

@@ -5,7 +5,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:music_player/Navigation/Routes.dart';
 import 'package:music_player/models/SongDto.dart';
 import 'package:music_player/ui/widgets/ListSongsWidget.dart';
 import 'package:music_player/ui/widgets/RecentWidget.dart';
@@ -175,8 +174,9 @@ class _HomePageState extends State<HomePage> {
                       new FloatingActionButton(
                         heroTag: "shuffle",
                         onPressed: () {
+                          /*Todo replace with router here*/
                           Navigator.pushReplacementNamed(
-                              context, Routes.hPlaylistRoute);
+                              context, '');
 
                           /*ToDo Add Button Press*/
                         },
