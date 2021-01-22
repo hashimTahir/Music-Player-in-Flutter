@@ -7,4 +7,5 @@ class Routes {
   static var hHomeRoute = '/hHomeRoute';
   static var hSplashRoute = '/hSplashRoute';
   static var hSongDetailRoute = '/hSongDetailRoute';
+  static var hTestRoute = '/hTestRoute';
 }

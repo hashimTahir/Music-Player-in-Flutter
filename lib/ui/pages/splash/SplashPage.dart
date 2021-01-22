@@ -7,8 +7,6 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player/Navigation/Routes.dart';
-import 'package:music_player/viewmodels/SplashViewModel.dart';
-import 'package:provider/provider.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -22,7 +20,6 @@ class _SplashPageState extends State<SplashPage> {
 
     Timer(Duration(seconds: 3),
         () => {Navigator.pushReplacementNamed(context, Routes.hHomeRoute)});
-    Provider.of<SplashViewModel>(context, listen: false).hFetchSongs();
   }
 
   @override

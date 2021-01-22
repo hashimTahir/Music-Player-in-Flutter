@@ -5,8 +5,6 @@
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:fimber/fimber_base.dart';
 import 'package:flutter/material.dart';
-import 'package:music_player/viewmodels/SplashViewModel.dart';
-import 'package:provider/provider.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import 'file:///C:/Users/HP/Desktop/Hashim/music_player/lib/ui/pages/home/HomePage.dart';
@@ -36,10 +34,7 @@ class HmusicApp extends StatelessWidget {
               title: 'Music Player',
               theme: theme,
               debugShowCheckedModeBanner: false,
-              home: ChangeNotifierProvider(
-                create: (context) => SplashViewModel(),
-                child: SplashPage(),
-              ),
+              home: SplashPage(),
               routes: hSetRoutes(),
             ),
           );
@@ -50,6 +45,7 @@ class HmusicApp extends StatelessWidget {
     return {
       Routes.hPlaylistRoute: (context) => PlaylistPage(),
       Routes.hHomeRoute: (context) => HomePage(),
+      Routes.hSongDetailRoute: (context) => SongDetailPage(),
       Routes.hSongDetailRoute: (context) => SongDetailPage(),
     };
   }
