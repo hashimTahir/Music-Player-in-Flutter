@@ -9,41 +9,83 @@ import 'package:music_player/repository/local/LocalRepositoryImpl.dart';
 import 'package:music_player/utils/Constants.dart';
 import 'package:stacked/stacked.dart';
 
+enum Status {
+  H_NONE,
+  H_CHECKING_DB,
+  H_CHECKING_DEVICE,
+  H_SONGS_FOUND_DB,
+  H_NO_SONGS_FOUND_DB,
+  H_SONGS_FOUND_DEVICE,
+  H_NO_SONGS_FOUND_DEVICE,
+  H_SONGS_ADDED_IN_DB
+}
+
 class SplashViewModel extends BaseViewModel {
   SongsRepository _hSongsRepositroy = locator<LocalRepositoryImpl>();
   bool _hIsLoading = false;
+  Status hStatus;
+
   bool get hIsLoading => _hIsLoading;
 
   SplashViewModel() {
     _hIsLoading = true;
-
-
-    /*Todo
-    *  Present loading view
-    * create db or get songs from db
-    * find device songs populate the db with missing songs / add all songs.
-    * remove loading page.
-    * move to next page.
-    * */
-
-
-    Constants.hLogger.d("View Model initilized.");
-    if (_hSongsRepositroy == null) {
-      Constants.hLogger.d("Song repo  null");
-    } else {
-      Constants.hLogger.d("Song repo not null");
-    }
+    hStatus = Status.H_NONE;
+    hCheckDbForSongs();
   }
 
-  void hFindSongs() async {
-    Constants.hLogger.d("Find Songs Called.");
-
+  Future<List<Song>> hFindSongs() async {
+    hStatus = Status.H_CHECKING_DEVICE;
     try {
       var songs = await MusicFinder.allSongs();
       List<Song> list = new List.from(songs);
+
+      if (list == null || list.length == 0) {
+        hStatus = Status.H_NO_SONGS_FOUND_DEVICE;
+
+        /*Todo No songs in device notify user*/
+      } else {
+        hStatus = Status.H_SONGS_FOUND_DEVICE;
+
+        for (final song in list) {
+          _hSongsRepositroy.hAddSong(song);
+        }
+        /*Todo Goto Home page remove loader*/
+        hStatus = Status.H_SONGS_ADDED_IN_DB;
+      }
       Constants.hLogger.d("List size ${list.length}");
+      return list;
     } catch (e) {
       Constants.hLogger.d("Exception  $e");
+    }
+  }
+
+  Future<bool> hCheckDbForSongs() async {
+    hStatus = Status.H_CHECKING_DB;
+    bool hHasSongsInDb = await _hSongsRepositroy.hHasSongsInDb();
+    if (hHasSongsInDb) {
+      hStatus = Status.H_SONGS_FOUND_DB;
+      /*Todo Remove Loding page and move to Home page*/
+    } else {
+      //  Find Songs and add to db
+
+      hFindSongs();
+    }
+  }
+
+  void hCheckForLoading() {
+    switch (hStatus) {
+      case Status.H_NONE:
+      case Status.H_CHECKING_DB:
+      case Status.H_CHECKING_DEVICE:
+      case Status.H_SONGS_ADDED_IN_DB:
+        _hIsLoading = true;
+        break;
+      case Status.H_SONGS_FOUND_DB:
+      case Status.H_NO_SONGS_FOUND_DB:
+      case Status.H_SONGS_FOUND_DEVICE:
+      case Status.H_NO_SONGS_FOUND_DEVICE:
+        _hIsLoading = false;
+        break;
     }
   }
 }

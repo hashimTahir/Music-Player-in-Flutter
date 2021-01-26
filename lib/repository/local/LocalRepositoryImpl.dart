@@ -2,6 +2,7 @@
  * Copyright (c) 2021/  1/ 20.  Created by Hashim Tahir
  */
 
+import 'package:flute_music_player/flute_music_player.dart';
 import 'package:music_player/models/SongModel.dart';
 import 'package:music_player/repository/SongsRepository.dart';
 import 'package:music_player/repository/database/DbConstants.dart';
@@ -9,26 +10,26 @@ import 'package:music_player/repository/database/SongsDb.dart';
 import 'package:music_player/utils/Constants.dart';
 import 'package:sqflite/sqflite.dart';
 
-/*Todo: Later add dependency Injection*/
 class LocalRepositoryImpl implements SongsRepository {
   Future<Database> songsDb = SongsDb.hSongsDb.hDataBase;
 
   @override
-  hAddSong(SongModel songModel) async {
+  hAddSong(Song songModel) async {
     try {
       final db = await songsDb;
       var raw = db.rawInsert(DbConstants.H_INSERT_SONG_Q, [
-        songModel.hId,
-        songModel.hDuration,
-        songModel.hTitle,
-        songModel.hAlbumArt,
-        songModel.hAlbum,
-        songModel.hUri,
-        songModel.hAlbumId,
-        songModel.hArtist,
-        songModel.hTimeStamp,
-        songModel.hCount,
-        songModel.hIsFav
+        /*Todo: To be fixed*/
+        // songModel.hId,
+        // songModel.hDuration,
+        // songModel.hTitle,
+        // songModel.hAlbumArt,
+        // songModel.hAlbum,
+        // songModel.hUri,
+        // songModel.hAlbumId,
+        // songModel.hArtist,
+        // songModel.hTimeStamp,
+        // songModel.hCount,
+        // songModel.hIsFav
       ]);
       return raw;
     } catch (e) {
@@ -84,8 +85,8 @@ class LocalRepositoryImpl implements SongsRepository {
   Future<bool> hHasSongsInDb() async {
     try {
       final db = await songsDb;
-      var count = Sqflite.firstIntValue(
-          await db.rawQuery(DbConstants.H_GET_COUNT_Q));
+      var count =
+          Sqflite.firstIntValue(await db.rawQuery(DbConstants.H_GET_COUNT_Q));
       if (count > 0) {
         return true;
       } else {
