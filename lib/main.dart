@@ -35,7 +35,7 @@ class HmusicApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
 
               /*Use navigation as part of stacked mvvm*/
-              initialRoute: Routes.testPage,
+              initialRoute: Routes.splashPage,
               onGenerateRoute: Router(),
               navigatorKey: StackedService.navigatorKey,
             ),

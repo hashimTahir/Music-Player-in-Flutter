@@ -2,8 +2,8 @@
  * Copyright (c) 2021/  1/ 22.  Created by Hashim Tahir
  */
 import 'package:auto_route/auto_route_annotations.dart';
+import 'package:music_player/ui/pages/splash/SplashPage.dart';
 import 'package:music_player/ui/pages/test/TestPage.dart';
-import 'package:music_player/ui/pages/test2/StartupTestPage.dart';
 
 /*The $ sign in the class name is very important because the router
 * which is generated is without the $ sign, and that is the one, which will
@@ -14,10 +14,7 @@ import 'package:music_player/ui/pages/test2/StartupTestPage.dart';
 @MaterialAutoRouter(
   routes: <AutoRoute>[
     // initial route is named "/"
-    MaterialRoute(page: StartupTestPage, initial: true),
-    MaterialRoute(
-      page: TestPage,
-    ),
+    MaterialRoute(page: SplashPage, initial: true),
   ],
 )
 class $Router {}

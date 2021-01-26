@@ -3,6 +3,7 @@
  */
 
 import 'package:injectable/injectable.dart';
+import 'package:music_player/repository/local/LocalRepositoryImpl.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 /*Dependencies injection can be used directly from view model. to delegate
@@ -20,4 +21,7 @@ abstract class ServicesModule {
 
   @lazySingleton
   BottomSheetService get bottomSheetService;
+
+  @lazySingleton
+  LocalRepositoryImpl get localRepositoryImpl;
 }

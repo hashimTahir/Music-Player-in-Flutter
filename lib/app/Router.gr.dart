@@ -9,15 +9,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import '../ui/pages/test/TestPage.dart';
-import '../ui/pages/test2/StartupTestPage.dart';
+import '../ui/pages/splash/SplashPage.dart';
 
 class Routes {
-  static const String startupTestPage = '/';
-  static const String testPage = '/test-page';
+  static const String splashPage = '/';
   static const all = <String>{
-    startupTestPage,
-    testPage,
+    splashPage,
   };
 }
 
@@ -25,21 +22,14 @@ class Router extends RouterBase {
   @override
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
-    RouteDef(Routes.startupTestPage, page: StartupTestPage),
-    RouteDef(Routes.testPage, page: TestPage),
+    RouteDef(Routes.splashPage, page: SplashPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
   final _pagesMap = <Type, AutoRouteFactory>{
-    StartupTestPage: (data) {
+    SplashPage: (data) {
       return MaterialPageRoute<dynamic>(
-        builder: (context) => StartupTestPage(),
-        settings: data,
-      );
-    },
-    TestPage: (data) {
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => TestPage(),
+        builder: (context) => SplashPage(),
         settings: data,
       );
     },
