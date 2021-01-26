@@ -59,4 +59,6 @@ class DbConstants {
       'INSERT INTO $H_RECENTS_TABLE($H_ID_COL, $H_DURATION_COL, '
       '$H_TITLE_COL, $H_ALBUM_ART_COL, $H_ALBUM_COL, $H_URI_COL, '
       '$H_ALBUM_ID_COL, $H_ARTIST_COL) VALUES(?,?,?,?,?,?,?,?);';
+
+  static const String H_GET_COUNT_Q = "SELECT COUNT(*) FROM $H_SONGS_TABLE";
 }

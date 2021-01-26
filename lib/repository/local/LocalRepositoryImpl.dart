@@ -79,4 +79,20 @@ class LocalRepositoryImpl implements SongsRepository {
       Constants.hLogger.d("Exception ${e}");
     }
   }
+
+  @override
+  Future<bool> hHasSongsInDb() async {
+    try {
+      final db = await songsDb;
+      var count = Sqflite.firstIntValue(
+          await db.rawQuery(DbConstants.H_GET_COUNT_Q));
+      if (count > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      Constants.hLogger.d("Exception ${e}");
+    }
+  }
 }

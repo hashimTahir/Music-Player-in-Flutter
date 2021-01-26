@@ -13,4 +13,7 @@ class SongsRepository {
   Future<int> hUpdateSong(SongModel model) {}
 
   Future<int> hDeleteSong(SongModel model) {}
+
+  Future<bool> hHasSongsInDb() {}
+
 }
