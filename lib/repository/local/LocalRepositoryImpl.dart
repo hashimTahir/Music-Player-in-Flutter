@@ -3,6 +3,7 @@
  */
 
 import 'package:flute_music_player/flute_music_player.dart';
+import 'package:music_player/models/SongMapper.dart';
 import 'package:music_player/models/SongModel.dart';
 import 'package:music_player/repository/SongsRepository.dart';
 import 'package:music_player/repository/database/DbConstants.dart';
@@ -14,24 +15,21 @@ class LocalRepositoryImpl implements SongsRepository {
   Future<Database> songsDb = SongsDb.hSongsDb.hDataBase;
 
   @override
-  hAddSong(Song songModel) async {
+  hAddSong(Song song) async {
+    SongModel hSongModel = SongMapper.hMapSongToModel(song);
+
     try {
       final db = await songsDb;
-      var raw = db.rawInsert(DbConstants.H_INSERT_SONG_Q, [
-        /*Todo: To be fixed*/
-        // songModel.hId,
-        // songModel.hDuration,
-        // songModel.hTitle,
-        // songModel.hAlbumArt,
-        // songModel.hAlbum,
-        // songModel.hUri,
-        // songModel.hAlbumId,
-        // songModel.hArtist,
-        // songModel.hTimeStamp,
-        // songModel.hCount,
-        // songModel.hIsFav
-      ]);
-      return raw;
+
+      int id = 0;
+      var count = Sqflite.firstIntValue(await db.rawQuery(
+          "SELECT COUNT(*) FROM songs WHERE id = ?", [hSongModel.hId]));
+      if (count == 0) {
+        id = await hInsertSong(hSongModel);
+      } else {
+        id = await hUpdateSong(hSongModel);
+      }
+      return id;
     } catch (e) {
       Constants.hLogger.d("Exception ${e}");
     }
@@ -95,5 +93,23 @@ class LocalRepositoryImpl implements SongsRepository {
     } catch (e) {
       Constants.hLogger.d("Exception ${e}");
     }
+  }
+
+  Future<int> hInsertSong(SongModel hSongModel) async {
+    final db = await songsDb;
+    var raw = db.rawInsert(DbConstants.H_INSERT_SONG_Q, [
+      hSongModel.hId,
+      hSongModel.hDuration,
+      hSongModel.hTitle,
+      hSongModel.hAlbumArt,
+      hSongModel.hAlbum,
+      hSongModel.hUri,
+      hSongModel.hAlbumId,
+      hSongModel.hArtist,
+      hSongModel.hTimeStamp,
+      hSongModel.hCount,
+      hSongModel.hIsFav
+    ]);
+    return raw;
   }
 }

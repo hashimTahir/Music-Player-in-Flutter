@@ -3,7 +3,6 @@
  */
 import 'package:auto_route/auto_route_annotations.dart';
 import 'package:music_player/ui/pages/splash/SplashPage.dart';
-import 'package:music_player/ui/pages/test/TestPage.dart';
 
 /*The $ sign in the class name is very important because the router
 * which is generated is without the $ sign, and that is the one, which will

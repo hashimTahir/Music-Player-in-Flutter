@@ -30,27 +30,30 @@ class SplashViewModel extends BaseViewModel {
   SplashViewModel() {
     _hIsLoading = true;
     hStatus = Status.H_NONE;
+    hCheckForLoading();
     hCheckDbForSongs();
   }
 
   Future<List<Song>> hFindSongs() async {
     hStatus = Status.H_CHECKING_DEVICE;
+    hCheckForLoading();
     try {
       var songs = await MusicFinder.allSongs();
       List<Song> list = new List.from(songs);
 
       if (list == null || list.length == 0) {
         hStatus = Status.H_NO_SONGS_FOUND_DEVICE;
-
+        hCheckForLoading();
         /*Todo No songs in device notify user*/
       } else {
         hStatus = Status.H_SONGS_FOUND_DEVICE;
-
+        hCheckForLoading();
         for (final song in list) {
           _hSongsRepositroy.hAddSong(song);
         }
         /*Todo Goto Home page remove loader*/
         hStatus = Status.H_SONGS_ADDED_IN_DB;
+        hCheckForLoading();
       }
       Constants.hLogger.d("List size ${list.length}");
       return list;
@@ -60,10 +63,13 @@ class SplashViewModel extends BaseViewModel {
   }
 
   Future<bool> hCheckDbForSongs() async {
+    Constants.hLogger.d("hCheckDbForSongs");
     hStatus = Status.H_CHECKING_DB;
+    hCheckForLoading();
     bool hHasSongsInDb = await _hSongsRepositroy.hHasSongsInDb();
     if (hHasSongsInDb) {
       hStatus = Status.H_SONGS_FOUND_DB;
+      hCheckForLoading();
       /*Todo Remove Loding page and move to Home page*/
     } else {
       //  Find Songs and add to db
@@ -73,6 +79,8 @@ class SplashViewModel extends BaseViewModel {
   }
 
   void hCheckForLoading() {
+    Constants.hLogger.d("status is  ${hStatus.toString()}");
+
     switch (hStatus) {
       case Status.H_NONE:
       case Status.H_CHECKING_DB:
