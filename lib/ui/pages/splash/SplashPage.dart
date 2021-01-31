@@ -5,6 +5,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player/ui/pages/splash/SplashViewModel.dart';
+import 'package:music_player/utils/Constants.dart';
 import 'package:stacked/stacked.dart';
 
 class SplashPage extends StatefulWidget {
@@ -16,10 +17,6 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-
-    // /*Todo user router*/
-    // Timer(Duration(seconds: 3),
-    //     () => {Navigator.pushReplacementNamed(context,'')});
   }
 
   @override
@@ -57,13 +54,7 @@ class _SplashPageState extends State<SplashPage> {
                       ),
                     ),
                     Expanded(
-                      child: Center(
-                        child:
-                            // ? CircularProgressIndicator(
-                            //     backgroundColor: Colors.white,
-                            //   )
-                            Container(),
-                      ),
+                      child: Center(child: hSetView(model)),
                     ),
                     Text("Setting up...",
                         style: TextStyle(color: Colors.white, fontSize: 20))
@@ -72,5 +63,16 @@ class _SplashPageState extends State<SplashPage> {
               ),
             )),
         viewModelBuilder: () => SplashViewModel());
+  }
+
+  hSetView(SplashViewModel model) {
+    Constants.hLogger
+        .d(" From Splash Page Loading   ${model.hIsLoading.toString()}");
+
+    if (model.hIsLoading) {
+      return CircularProgressIndicator(backgroundColor: Colors.white);
+    } else {
+      return Container();
+    }
   }
 }
