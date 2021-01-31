@@ -97,13 +97,13 @@ class SplashViewModel extends BaseViewModel {
       case Status.H_SONGS_FOUND_DEVICE:
       case Status.H_NO_SONGS_FOUND_DEVICE:
         _hIsLoading = false;
-        hNavigateToTestPage();
+        hNavigateToHomePage();
         break;
     }
     Constants.hLogger.d("Loading   ${_hIsLoading.toString()}");
   }
 
-  Future hNavigateToTestPage() async {
+  Future hNavigateToHomePage() async {
     await _navigationService.replaceWith(Routes.homePage);
   }
 }
