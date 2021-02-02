@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
-        builder: (context, model, child) => CustomScrollView(
+        builder: (context, hHomeViewModel, child) => CustomScrollView(
               slivers: <Widget>[
                 new SliverAppBar(
                   expandedHeight: MediaQuery.of(context).size.height / 2.4,
@@ -226,7 +226,7 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.only(
                           left: 8.0, top: 8.0, bottom: 8.0),
                       child: new Text(
-                        "Trending",
+                        "All Songs",
                         style: new TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20.0,
@@ -235,54 +235,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ScopedModelDescendant<SongDto>(
                         builder: (context, child, model) {
-                      return new Card(
-                        child: new InkResponse(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              SizedBox(
-                                  child: new Hero(
-                                child: new Image.asset(
-                                  "images/default_image.webp",
-                                  height: 180.0,
-                                  width: MediaQuery.of(context).size.width,
-                                  fit: BoxFit.cover,
-                                ),
-                                tag: "Some tag 2",
-                              )),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width,
-                                child: Padding(
-                                  // padding: EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
-                                  padding:
-                                      EdgeInsets.fromLTRB(4.0, 8.0, 0.0, 0.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Text(
-                                        'Title here',
-                                        style: new TextStyle(fontSize: 18.0),
-                                        maxLines: 1,
-                                      ),
-                                      SizedBox(height: 8.0),
-                                      Text(
-                                        'Artist Name Here',
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                            fontSize: 14.0, color: Colors.grey),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          onTap: () {
-                            /*Todo: Add List click Listener*/
-                          },
-                        ),
-                      );
+                      return new ListSongsWidget(TestData.hGetTestData2());
                     })
                   ]),
                 ),

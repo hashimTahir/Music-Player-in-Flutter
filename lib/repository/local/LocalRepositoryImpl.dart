@@ -69,10 +69,8 @@ class LocalRepositoryImpl implements SongsRepository {
   Future<int> hUpdateSong(SongModel model) async {
     try {
       final db = await songsDb;
-
       int h = await db.update(DbConstants.H_SONGS_TABLE, model.toMap(),
           where: '${DbConstants.H_ID_COL}=?', whereArgs: [model.hId]);
-
       return h;
     } catch (e) {
       Constants.hLogger.d("Exception ${e}");
@@ -111,5 +109,24 @@ class LocalRepositoryImpl implements SongsRepository {
       hSongModel.hIsFav
     ]);
     return raw;
+  }
+
+  @override
+  Future<List<SongModel>> hGetFavouriteSongs() async {
+    try {
+      final db = await songsDb;
+
+      List<Map<String, dynamic>> hList = await db.query(
+          DbConstants.H_SONGS_TABLE,
+          where: '${DbConstants.H_IS_FAV_COL} =?',
+          whereArgs: [1]);
+      List<SongModel> hSongModelList = List.empty(growable: true);
+      hList.forEach((element) {
+        hSongModelList.add(SongModel.fromMap(element));
+      });
+      return hSongModelList;
+    } catch (e) {
+      Constants.hLogger.d("Exception ${e}");
+    }
   }
 }
