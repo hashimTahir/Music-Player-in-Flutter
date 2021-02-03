@@ -5,8 +5,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player/models/SongModel.dart';
-
-import 'AvatarWidget.dart';
+import 'package:music_player/ui/widgets/ListItem.dart';
 
 // TODO: implement ListSongsWidget
 class ListSongsWidget extends StatefulWidget {
@@ -27,13 +26,8 @@ class _ListSongsWidgetState extends State<ListSongsWidget> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        // appBar: widget.orientation == Orientation.portrait
-        //     ? new AppBar(
-        //         title: getTitle(widget.mode),
-        //       )
-        //     : null,
         appBar: new AppBar(
-          title: Text("title here"),
+          title: Text("All Songs"),
           actions: <Widget>[
             widget.mode == 3
                 ? IconButton(
@@ -49,70 +43,8 @@ class _ListSongsWidgetState extends State<ListSongsWidget> {
         ),
         body: new Container(
           child: new ListView.builder(
-            itemCount: hSongList.length == null ? 0 : hSongList.length,
-            itemBuilder: (context, index) => Column(
-              children: <Widget>[
-                new Divider(
-                  height: 8.0,
-                ),
-                new ListTile(
-                  leading: new Hero(
-                    child: AvatarWidget(hSongList[index]),
-                    tag: hSongList[index].hTitle,
-                  ),
-                  title: new Text('song title here',
-                      maxLines: 1, style: new TextStyle(fontSize: 18.0)),
-                  subtitle: new Text(
-                    'Song artist here',
-                    maxLines: 1,
-                    style: new TextStyle(fontSize: 12.0, color: Colors.grey),
-                  ),
-                  trailing: widget.mode == 2
-                      ? new Text(
-                          (index + 1).toString(),
-                          style:
-                              new TextStyle(fontSize: 12.0, color: Colors.grey),
-                        )
-                      : new Text(
-                          new Duration(milliseconds: 22)
-                              .toString()
-                              .split('.')
-                              .first,
-                          style: new TextStyle(
-                              fontSize: 12.0, color: Colors.grey)),
-                  onTap: () {
-                    /*Todo: ON Tap listener*/
-                  },
-                  onLongPress: () {
-                    if (widget.mode == 3) {
-                      showDialog(
-                        context: context,
-                        child: new AlertDialog(
-                          title: new Text(
-                              'Are you sure want remove this from favourites?'),
-                          content: new Text('Song title here'),
-                          actions: <Widget>[
-                            new FlatButton(
-                              onPressed: () => Navigator.of(context).pop(false),
-                              child: new Text(
-                                'No',
-                              ),
-                            ),
-                            new FlatButton(
-                              onPressed: () {
-                                /*Todo on press listener*/
-                              },
-                              child: new Text('Yes'),
-                            ),
-                          ],
-                        ),
-                      );
-                    }
-                  },
-                ),
-              ],
-            ),
-          ),
+              itemCount: hSongList.length == null ? 0 : hSongList.length,
+              itemBuilder: (context, index) => ListItem(hSongList[index])),
         ));
   }
 

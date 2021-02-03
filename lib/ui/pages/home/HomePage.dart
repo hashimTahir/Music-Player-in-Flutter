@@ -232,11 +232,7 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 20.0,
                         ),
                       ),
-                    ),
-                    ScopedModelDescendant<SongDto>(
-                        builder: (context, child, model) {
-                      return new ListSongsWidget(TestData.hGetTestData2());
-                    })
+                    )
                   ]),
                 ),
               ],

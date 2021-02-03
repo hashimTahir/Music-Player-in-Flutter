@@ -46,5 +46,5 @@ Get and auto_route to remove all the boilerplate code.
    For this  use get_it and injectable to generate all the service code.
 
 
- ###   Data Models: Freezed and Json_serializable is used to
-  generate all of our models required in the app.
+ ###   Data Models: Freezed and Json_serializable
+  is used to generate all of the models required in the app.

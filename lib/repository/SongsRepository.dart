@@ -12,6 +12,9 @@ class SongsRepository {
 
   Future<List<SongModel>> hGetFavouriteSongs() {}
 
+
+  Future<List<SongModel>> hFindSongsByArtist(String artist) {}
+
   Future<int> hUpdateSong(SongModel model) {}
 
   Future<int> hDeleteSong(SongModel model) {}

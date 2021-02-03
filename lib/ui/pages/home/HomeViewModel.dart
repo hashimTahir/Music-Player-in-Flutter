@@ -18,7 +18,7 @@ class HomeViewModel extends BaseViewModel {
 
   //Public getters
   List<SongModel> get hAllSongs => _hAllSongs;
-  List<SongModel> _FavSongs;
+  List<SongModel> _Albums;
 
   HomeViewModel() {
     _hGetSongs();

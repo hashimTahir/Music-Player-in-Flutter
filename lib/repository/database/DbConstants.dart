@@ -61,4 +61,8 @@ class DbConstants {
       '$H_ALBUM_ID_COL, $H_ARTIST_COL) VALUES(?,?,?,?,?,?,?,?);';
 
   static const String H_GET_COUNT_Q = "SELECT COUNT(*) FROM $H_SONGS_TABLE";
+
+  static const String H_SONGS_BY_ALBUMS_Q = "SELECT DISTINCT $H_ALBUM_ID_COL,"
+      "$H_ALBUM_COL,$H_ARTIST_COL ,$H_ALBUM_ART_COL FROM $H_SONGS_TABLE "
+      "GROUPBY $H_ALBUM_COL ORDERBY $H_ALBUM_COL";
 }

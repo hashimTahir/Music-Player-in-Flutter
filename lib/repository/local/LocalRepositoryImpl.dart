@@ -129,4 +129,33 @@ class LocalRepositoryImpl implements SongsRepository {
       Constants.hLogger.d("Exception ${e}");
     }
   }
+
+  @override
+  Future<List<SongModel>> hFindSongsByArtist(String artist) async {
+    try {
+      final db = await songsDb;
+      List<Map> results = await db.query(DbConstants.H_SONGS_TABLE,
+          where: '${DbConstants.H_ARTIST_COL} =?', whereArgs: [artist]);
+      List<SongModel> hSongModelList = List.empty(growable: true);
+      results.forEach((element) {
+        hSongModelList.add(SongModel.fromMap(element));
+      });
+      return hSongModelList;
+    } catch (e) {}
+  }
+
+  Future<List<SongModel>> hFindAlbums() async {
+    try {
+      final db = await songsDb;
+
+      List<Map> results = await db.rawQuery(DbConstants.H_SONGS_BY_ALBUMS_Q);
+      List<SongModel> hSongModelList = List.empty(growable: true);
+      results.forEach((element) {
+        hSongModelList.add(SongModel.fromMap(element));
+      });
+      return hSongModelList;
+    } catch (e) {
+      Constants.hLogger.d("Exception ${e}");
+    }
+  }
 }
