@@ -54,6 +54,7 @@ dependencies:
   stacked: ^1.7.7
   stacked_services: ^0.6.4
   auto_route: ^0.6.9
+  material_floating_search_bar: ^0.2.6
   get_it:
   injectable:
 

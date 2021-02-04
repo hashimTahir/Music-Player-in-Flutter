@@ -6,9 +6,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player/models/SongModel.dart';
 import 'package:music_player/ui/pages/home/HomeViewModel.dart';
-import 'file:///C:/Users/HP/Desktop/Hashim/music_player/lib/ui/pages/home/widgets/ListSongItem.dart';
+import 'package:music_player/ui/pages/home/widgets/TabPagerWidget.dart';
 import 'package:music_player/utils/Constants.dart';
 import 'package:stacked/stacked.dart';
+
+import 'file:///C:/Users/HP/Desktop/Hashim/music_player/lib/ui/pages/home/widgets/ListSongItem.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -24,8 +26,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
-        builder: (context, hHomeViewModel, child) =>
-            Container(child: hSetSongs(hHomeViewModel.hAllSongs)),
+        builder: (context, hHomeViewModel, child) => TabPagerWidget(),
         viewModelBuilder: () => HomeViewModel());
   }
 
