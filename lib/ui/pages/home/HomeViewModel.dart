@@ -14,22 +14,26 @@ class HomeViewModel extends BaseViewModel {
   //Private fields
   SongsRepository _hSongsRepositroy = locator<LocalRepositoryImpl>();
   NavigationService _navigationService = locator<NavigationService>();
-  List<SongModel> _hAllSongs;
 
-  //Public getters
+
+  List<SongModel> _hAllSongs;
+  bool _hIsLoading;
+
+  bool get hIsLoading => _hIsLoading;
+
   List<SongModel> get hAllSongs => _hAllSongs;
-  List<SongModel> _Albums;
+
 
   HomeViewModel() {
-    _hGetSongs();
+    _hIsLoading = false;
+    hGetSongs();
   }
 
-  _hGetSongs() async {
+  hGetSongs() async {
     _hAllSongs = await _hSongsRepositroy.hGetAllSongs();
-    _FavSongs = await _hSongsRepositroy.hGetFavouriteSongs();
-    Constants.hLogger.d("AllSongs list size${hAllSongs.length}");
-    Constants.hLogger.d("Fav list size${_FavSongs.length}");
+    _hIsLoading = false;
+    notifyListeners();
+
   }
 
-  List<SongModel> get FavSongs => _FavSongs;
 }

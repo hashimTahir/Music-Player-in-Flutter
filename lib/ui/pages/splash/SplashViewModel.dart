@@ -100,7 +100,6 @@ class SplashViewModel extends BaseViewModel {
         hNavigateToHomePage();
         break;
     }
-    Constants.hLogger.d("Loading   ${_hIsLoading.toString()}");
   }
 
   Future hNavigateToHomePage() async {

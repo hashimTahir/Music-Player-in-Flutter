@@ -6,6 +6,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player/models/SongDto.dart';
+import 'package:music_player/models/SongModel.dart';
 import 'package:music_player/ui/pages/home/HomeViewModel.dart';
 import 'package:music_player/ui/widgets/ListSongsWidget.dart';
 import 'package:music_player/ui/widgets/RecentWidget.dart';
@@ -20,6 +21,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
@@ -195,8 +201,8 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                    new Divider(),
-                    new Padding(
+                    Divider(),
+                    Padding(
                       padding: const EdgeInsets.only(
                           left: 8.0, top: 8.0, bottom: 8.0),
                       child: new Text(
@@ -208,8 +214,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     RecentWidget(TestData.hGetTestData3()),
-                    new Divider(),
-                    new Padding(
+                    Divider(),
+                    Padding(
                       padding: const EdgeInsets.only(
                           left: 8.0, top: 8.0, bottom: 8.0),
                       child: new Text(
@@ -221,8 +227,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     RecentWidget(TestData.hGetTestData4()),
-                    new Divider(),
-                    new Padding(
+                    Divider(),
+                    Padding(
                       padding: const EdgeInsets.only(
                           left: 8.0, top: 8.0, bottom: 8.0),
                       child: new Text(
@@ -232,11 +238,20 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 20.0,
                         ),
                       ),
-                    )
+                    ),
+                    Container(child: hSetSongs(hHomeViewModel.hAllSongs))
                   ]),
                 ),
               ],
             ),
         viewModelBuilder: () => HomeViewModel());
+  }
+
+  hSetSongs(List<SongModel> hAllSongs) {
+    if (hAllSongs == null) {
+      return CircularProgressIndicator();
+    } else {
+
+    }
   }
 }
