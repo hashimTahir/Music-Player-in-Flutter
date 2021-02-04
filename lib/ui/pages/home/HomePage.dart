@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player/models/SongModel.dart';
 import 'package:music_player/ui/pages/home/HomeViewModel.dart';
-import 'package:music_player/ui/widgets/ListSongItem.dart';
+import 'file:///C:/Users/HP/Desktop/Hashim/music_player/lib/ui/pages/home/widgets/ListSongItem.dart';
 import 'package:music_player/utils/Constants.dart';
 import 'package:stacked/stacked.dart';
 

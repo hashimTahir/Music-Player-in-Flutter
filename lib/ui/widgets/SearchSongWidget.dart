@@ -10,11 +10,9 @@ import 'package:music_player/utils/TestData.dart';
 
 import 'AvatarWidget.dart';
 
-// TODO: implement ListSongsWidget
 class SearchSongWidget extends StatelessWidget {
   List<SongModel> hSongList = TestData.hGetTestData4();
 
-  /**/
 
   @override
   Widget build(BuildContext context) {

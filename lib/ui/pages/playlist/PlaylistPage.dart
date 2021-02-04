@@ -3,8 +3,6 @@
  */
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:music_player/ui/widgets/LandScapeWidget.dart';
-import 'package:music_player/ui/widgets/PortraitWidget.dart';
 
 class PlaylistPage extends StatefulWidget {
   @override
@@ -17,28 +15,6 @@ class _PlaylistPageState extends State<PlaylistPage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      key: scaffoldState,
-      body: Stack(children: <Widget>[
-        orientation == Orientation.portrait
-            ? PortraitWidget()
-            : LandScapeWidget(),
-        new Positioned(
-          //Place it at the top, and not use the entire screen
-          top: 0.0,
-          left: 0.0,
-          right: 0.0,
-          child: AppBar(
-            title: Text('Now Playing'),
-            backgroundColor: Colors.transparent, //No more green
-            elevation: 0.0, //Shadow gone
-            leading: IconButton(
-              icon: Icon(Icons.clear),
-              onPressed: () => {Navigator.pop(context)},
-            ),
-          ),
-        ),
-      ]),
-    );
+    return new Scaffold();
   }
 }

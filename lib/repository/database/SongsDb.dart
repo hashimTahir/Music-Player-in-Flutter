@@ -44,7 +44,7 @@ class SongsDb {
 
       await db.execute(DbConstants.H_CREATE_RECENTS_TABLE_Q);
     } catch (e) {
-      Constants.hLogger.d("Exception ${e}");
+      Constants.hLogger.d("Exception $e");
     }
   }
 }

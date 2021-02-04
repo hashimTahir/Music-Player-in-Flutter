@@ -31,7 +31,7 @@ class LocalRepositoryImpl implements SongsRepository {
       }
       return id;
     } catch (e) {
-      Constants.hLogger.d("Exception ${e}");
+      Constants.hLogger.d("Exception $e");
     }
   }
 
@@ -44,7 +44,7 @@ class LocalRepositoryImpl implements SongsRepository {
           where: '${DbConstants.H_ID_COL}=?', whereArgs: [model.hId]);
       return h;
     } catch (e) {
-      Constants.hLogger.d("Exception ${e}");
+      Constants.hLogger.d("Exception $e");
     }
   }
 
@@ -73,7 +73,7 @@ class LocalRepositoryImpl implements SongsRepository {
           where: '${DbConstants.H_ID_COL}=?', whereArgs: [model.hId]);
       return h;
     } catch (e) {
-      Constants.hLogger.d("Exception ${e}");
+      Constants.hLogger.d("Exception $e");
     }
   }
 
@@ -89,7 +89,7 @@ class LocalRepositoryImpl implements SongsRepository {
         return false;
       }
     } catch (e) {
-      Constants.hLogger.d("Exception ${e}");
+      Constants.hLogger.d("Exception $e");
     }
   }
 
@@ -126,7 +126,7 @@ class LocalRepositoryImpl implements SongsRepository {
       });
       return hSongModelList;
     } catch (e) {
-      Constants.hLogger.d("Exception ${e}");
+      Constants.hLogger.d("Exception $e");
     }
   }
 
@@ -155,7 +155,7 @@ class LocalRepositoryImpl implements SongsRepository {
       });
       return hSongModelList;
     } catch (e) {
-      Constants.hLogger.d("Exception ${e}");
+      Constants.hLogger.d("Exception $e");
     }
   }
 }
