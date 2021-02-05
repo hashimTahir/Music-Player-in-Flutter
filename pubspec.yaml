@@ -22,39 +22,39 @@ environment:
 
 dependencies:
   flutter:
-   sdk: flutter
+    sdk: flutter
   sqflite:
-#    A Flutter plugin for finding commonly used locations on the filesystem.
-#  Supports iOS, Android, Linux and MacOS. Not all methods are supported on all platforms.
+  #    A Flutter plugin for finding commonly used locations on the filesystem.
+  #  Supports iOS, Android, Linux and MacOS. Not all methods are supported on all platforms.
   path_provider: ^1.6.27
-#  A Flutter plugin for launching a URL in the mobile platform. Supports iOS, Android, web, Windows, macOS, and Linux.
+  #  A Flutter plugin for launching a URL in the mobile platform. Supports iOS, Android, web, Windows, macOS, and Linux.
   url_launcher: ^5.7.10
-#  Media notification for flutter, on android
+  #  Media notification for flutter, on android
   media_notification: ^0.0.5
   font_awesome: ^5.10.1
-#  A Search App Bar like the one in Gmail and Google Photos.
+  #  A Search App Bar like the one in Gmail and Google Photos.
   floating_search_bar: ^0.3.0
-#  A flutter package which contains a collection of some cool and awesome text animations.
+  #  A flutter package which contains a collection of some cool and awesome text animations.
   animated_text_kit: ^3.1.0
-#  Similar to a ListView, but lets you programmatically jump to any item, by index.
+  #  Similar to a ListView, but lets you programmatically jump to any item, by index.
   indexed_list_view: ^1.1.5
-#  Clip your widgets with custom shapes provided.
+  #  Clip your widgets with custom shapes provided.
   clippy_flutter: ^1.1.1
-#  A Flutter plugin to share content from your Flutter app via the platform's share dialog.
+  #  A Flutter plugin to share content from your Flutter app via the platform's share dialog.
   share: ^0.6.5+4
   shared_preferences: ^0.5.12+4
-#  For logging
+  #  For logging
   fimber: ^0.4.4
   cupertino_icons: ^1.0.1
   dynamic_theme: ^1.0.1
-#  A set of utilities that allow you to easily pass a data Model from a parent Widget down to its descendants.
+  #  A set of utilities that allow you to easily pass a data Model from a parent Widget down to its descendants.
   scoped_model: ^1.1.0
   flute_music_player: ^0.0.6
   provider: ^4.3.3
   stacked: ^1.7.7
   stacked_services: ^0.6.4
   auto_route: ^0.6.9
-  material_floating_search_bar: ^0.2.6
+  flutter_svg: ^0.19.2+1
   get_it:
   injectable:
 
